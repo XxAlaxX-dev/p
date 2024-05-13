@@ -1,7 +1,4 @@
 <?php
-namespace App\Http\Controllers;
-use App\Http\Controllers\ClientsController;
-
 
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', [PagesController::class,'welcome']); //
-//Route::get('/services', [PagesController::class,'services']);
-Route::resource('/clients', ClientsController::class);
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+ //Route::resource('/clients', ClientsController::class);
